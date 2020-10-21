@@ -15,8 +15,8 @@ namespace PrecireV2Async
             var httpClient = new HttpClient();
             var client = new redoc_v2_textsClient(httpClient);
 
-            Console.WriteLine("AnalyzeText");
-            var r1 = await AnalyzeText(client);
+            //Console.WriteLine("AnalyzeText");
+            //var r1 = await AnalyzeText(client);
             Console.WriteLine("AnalyzeDoc");
             var r2 = await AnalyzeDoc(client);
         }
@@ -40,7 +40,7 @@ namespace PrecireV2Async
 
         private static async Task<Response2> AnalyzeDoc(redoc_v2_textsClient client)
         {
-            var bytes = File.ReadAllBytes(@"C:\temp\testdoc.docx");
+            var bytes = File.ReadAllBytes(@"testdoc.docx");
             var base64 = Convert.ToBase64String(bytes);
 
             var r1 = await client.V2TextsPostAsync(ContentLanguage.En, ContentType.Application_json, key, new Body
